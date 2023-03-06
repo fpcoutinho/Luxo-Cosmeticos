@@ -1,0 +1,38 @@
+footer {
+    margin: 40px 0px 10px 0px;
+    justify-content: center;
+    color: gray;
+}
+
+footer img {
+    margin-right: 30px;
+}
+
+figure {
+    border: 1px #cccccc solid;
+    background-color: #F2EDED;
+    padding: 10px;
+    margin: auto;
+}
+
+figcaption {
+    font-style: italic;
+    padding: 5px;
+    text-align: center;
+}
+
+#div-centro-distribuicao {
+    width: 500px;
+    margin: auto;
+}
+
+#familia-pelho {
+    float: right;
+    margin-left: 10px;
+}
+
+#sobre-header {
+    background-image: url("../img/sobre-background.jpg");
+    padding: 9px;
+    margin-top: 25px;
+}
