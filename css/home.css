@@ -1,10 +1,17 @@
+html, body {
+    margin-inline: 0;
+    height: 100%;
+}
+
 body{
-    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
 }
 
 #header{
     display: flex;
     margin-bottom: 5px;
+    justify-content: space-between;
 }
 
 #header li {
@@ -70,36 +77,35 @@ body{
     text-decoration: none;
 }
 
-footer{
+.footer{
     background-image: url("../img/fundo-rodape.png");
     padding: 20px 200px 20px 200px;
-    position: fixed;
-    bottom: 0;
-    left: 200px;
-    right: 200px;
-    height: 75px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
 }
 
-footer ul{
-    float: right;
+#footer-menu {
+    align-self: flex-end;
 }
 
-footer li{
+.footer li{
     float: left;
     margin-inline: 10px;
     list-style-type: none;
 }
 
 #pagina{
-    padding-inline: 200px;
-    height: 100%;
-    width:fit-content;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 19.5% auto;
 }
 
 #conteudo {
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 section{
@@ -107,7 +113,7 @@ section{
     margin: 10px;
     padding-left: 10px;
     border-radius: 5px;
-    box-shadow: #000;
+    box-shadow: #000;    
 }
 
 figcaption {
@@ -116,8 +122,9 @@ figcaption {
     text-align: center;
 }
 
-#artigos{
-    display: flex;
+article{
+    display:flex;
+    justify-content: space-between;
 }
 
 #novidades{
