@@ -26,10 +26,8 @@ body{
 
 #nav-header{
     margin-top: auto;
-    height: min-content;
-    flex:3;
-    float:right;
-    align-content: baseline;
+    height: auto;
+    display: flex;
 }
 
 #nav-header ul {
@@ -37,7 +35,7 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    float: right;
+    align-self: flex-end;
 }
 
 #nav-header li a {
@@ -51,22 +49,25 @@ body{
 }
 
 #sacola{
-    flex:1;
+    padding-top: 10px;
+    align-self: flex-end;
+    display: flex;
 }
 
 #sacola a {
-    float: right;
     color: #000;
     font-size: small;
+    display: flex;
+    gap: 5px;
+}
+
+#sacola a em{
+    align-self: flex-end;
+    line-height: 1.1;
 }
 
 #sacola a:hover {
     text-decoration: none;
-}
-
-#sacola img {
-    vertical-align: text-bottom;
-
 }
 
 footer{
