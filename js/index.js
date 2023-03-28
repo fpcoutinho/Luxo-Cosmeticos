@@ -7,29 +7,30 @@ function trocaBanner() {
 }
 
 const timer = setInterval(trocaBanner, 4000);
+// preencher ul com os produtos do img/produtos/perfumes
+const ulPerfumes = document.querySelector(".lista-perfumes");
+const perfumes = [
+  "img/produtos/perfumes/1.png",
+  "img/produtos/perfumes/2.png",
+  "img/produtos/perfumes/3.png",
+  "img/produtos/perfumes/4.png",
+  "img/produtos/perfumes/5.png",
+  "img/produtos/perfumes/6.png",
+  "img/produtos/perfumes/7.png",
+  "img/produtos/perfumes/8.png",
+  "img/produtos/perfumes/9.png",
+  "img/produtos/perfumes/10.png",
+];
 
-const olsProduto = document.querySelectorAll(".lista-produtos");
-const produtosNovidades = document.querySelectorAll(".novidades .produto");
-const produtosVendidos = document.querySelectorAll(".mais-vendidos .produto");
-const botaoMaisNovidades = document.getElementById("botao-mais-novidades");
-const botaoMaisVendidos = document.getElementById("botao-mais-vendidos");
+perfumes.forEach((perfume) => {
+  const li = document.createElement("li");
+  const img = document.createElement("img");
+  img.src = perfume;
+  const price = document.createElement("p");
+  // random price between 99 and 299
+  price.textContent = `R$ ${Math.floor(Math.random() * 200 + 99)},00`;
+  li.appendChild(img);
+  li.appendChild(price);
+  ulPerfumes.appendChild(li);
+});
 
-function verMais(botao, produtos) {
-  if (botao.textContent === "mais produtos") {
-    botao.textContent = "menos produtos";
-  } else {
-    botao.textContent = "mais produtos";
-  }
-  for (let i = 6; i < produtos.length; i++) {
-    produtos[i].hidden
-      ? (produtos[i].hidden = false)
-      : (produtos[i].hidden = true);
-  }
-}
-
-botaoMaisNovidades.addEventListener("click", () =>
-  verMais(botaoMaisNovidades, produtosNovidades)
-);
-botaoMaisVendidos.addEventListener("click", () =>
-  verMais(botaoMaisVendidos, produtosVendidos)
-);
