@@ -1,10 +1,12 @@
 :root {
   --bg: #fff;
+  --header-bg: #ffc6c6;
   --primary: #0f172a;
   --secondary: #334155;
+  --h: #7f1d1d;
+  --h-hover: #991b1b;
   --label: #64748b;
   --cards: #f4f6f8;
-  --cards-highlight: #ebf8fe;
 }
 
 html {
@@ -21,19 +23,16 @@ body {
 }
 
 a {
-  color: var(--secondary);
+  color: var(--bg);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--primary);
   text-decoration: underline;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0;
+h2 {
+  color: var(--h);
 }
 
 ul {
@@ -47,7 +46,7 @@ li {
 }
 
 header {
-  background-color: var(--cards-highlight);
+  background-color: var(--header-bg);
   color: var(--bg);
   padding: 0.4rem 1rem 0rem 1rem;
   display: flex;
@@ -83,14 +82,14 @@ header {
 
 .form-group input[type="submit"] {
   padding: 0.5rem;
-  background-color: var(--secondary);
+  background-color: var(--h);
   color: var(--bg);
   border: none;
   cursor: pointer;
 }
 
 .form-group input[type="submit"]:hover {
-  background-color: var(--primary);
+  background-color: var(--h-hover);
 }
 
 @media screen and (min-width: 768px) {
@@ -100,6 +99,7 @@ header {
     justify-content: center;
     gap: 1rem;
     height: 100%;
+    margin: 1rem;
   }
   .form {
     width: 500px;
