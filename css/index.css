@@ -135,6 +135,7 @@ li a:hover {
 }
 
 section h2 {
+  margin-left: 1rem;
   font-size: 1.7rem;
 }
 
@@ -144,6 +145,8 @@ figure {
   justify-content: center;
   align-items: center;
   margin: 0px 0px 5px 0px !important;
+  margin-block: 0;
+  margin-inline: 0;
 }
 
 figcaption {
@@ -164,7 +167,7 @@ article img {
   width: fit-content;
   color: #fff;
   background-image: url("../img/fundo-rodape.png");
-  float: right;
+  align-self: flex-end;
   margin: 0px 10px 10px 0px;
 }
 
