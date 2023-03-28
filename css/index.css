@@ -153,7 +153,6 @@ section ul {
   justify-content: flex-start;
   margin: 0;
   padding: 0 10px;
-  max-height: 20rem;
   overflow: auto;
   gap: 1rem;
   padding-bottom: 1rem;;
@@ -249,6 +248,7 @@ footer .footer-menu {
   right: 0;
   gap: 1rem;
   display: flex;
+  margin: 0 1rem;
 }
 
 footer .footer-menu a {
@@ -256,6 +256,38 @@ footer .footer-menu a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+footer .footer-menu .fa {
+  text-align: center;
+  text-decoration: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 4px;
+}
+
+footer .footer-menu .fa:hover {
+  opacity: 0.7;
+}
+
+footer .footer-menu .fa-facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+footer .footer-menu .fa-instagram {
+  background-color: #125688;
+  color: white;
+}
+
+footer .footer-menu .fa-twitter {
+  background-color: #55acee;
+  color: white;
+}
+
+footer .footer-menu .fa-youtube {
+  background-color: #bb0000;
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
