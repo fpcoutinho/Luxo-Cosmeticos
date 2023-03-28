@@ -57,26 +57,26 @@ header li a {
   flex: 2;
 }
 
-.sacola {
+.menu-icons {
   padding-top: 10px;
   align-self: flex-end;
   display: flex;
 }
 
-.sacola a {
+.menu-icons a {
   color: #000;
   font-size: small;
   display: flex;
   gap: 5px;
 }
 
-.sacola a em {
+.menu-icons a em {
   align-self: flex-end;
   line-height: 1.1;
   text-decoration: none;
 }
 
-.sacola a:hover {
+.menu-icons a:hover {
   text-decoration: none;
 }
 
