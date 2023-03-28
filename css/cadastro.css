@@ -1,8 +1,112 @@
-input {
-    display: block;
+:root {
+  --bg: #fff;
+  --header-bg: #ffc6c6;
+  --primary: #0f172a;
+  --secondary: #334155;
+  --h: #7f1d1d;
+  --h-hover: #991b1b;
+  --label: #64748b;
+  --cards: #f4f6f8;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+body {
+  font-family: "Inter";
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--bg);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  color: var(--h);
+}
+
+ul {
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  background-color: var(--header-bg);
+  color: var(--bg);
+  padding: 0.4rem 1rem 0rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: var(--label);
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.5rem;
+}
+
+.form-group input[type="submit"] {
+  padding: 0.5rem;
+  background-color: var(--h);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+  background-color: var(--h-hover);
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 100%;
+    margin: 1rem;
+  }
+  .form {
+    width: 500px;
+    border: 1px solid var(--secondary);
+    height: 100%;
   }
 
-form {
+  /* form {
     border-style:groove;
     display: inline-block;
     position: relative;
@@ -22,9 +126,5 @@ h1 {
 
 div {
     padding: 5px;
-  }
-
-button{
-    padding: 5px;
-    margin: 25px;
+} */
 }

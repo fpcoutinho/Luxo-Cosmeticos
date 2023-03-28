@@ -5,53 +5,71 @@
     <title>Cadastrar Usuário</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/cadastro.css">
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 </head>
 
 <body>
-    <div class="cadastrar-usuario">
-        <h1>Cadastrar Usuário</h1>
-        <form>
-            <div class="nome">
-                <label for="nome">Nome *</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            <div class="email">
-                <label for="email">E-mail *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="senha">
-                <label for="senha">Senha *</label>
-                <input type="password" id="senha" name="senha" required>
-            </div>
-            <div class="confirmar-senha">
-                <label for="confirma-senha">Confirmar Senha *</label>
-                <input type="password" id="confirma-senha" name="confirma-senha" required>
-            </div>
-            <div class="telefone">
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone">
-            </div>
+    <header>
+        <div class="logo">
+            <img src="./img/logo.png" alt="Logo">
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </header>
 
-            <div class="genero">
-                <label for="genero">Gênero</label><br>
-                <select id="genero" name="genero">
-                    <option value="">Selecione...</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="feminino">Feminino</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
+    <main>
+        <form class="form-cosmetico" action="index.html" method="post">
+            <div class="form">
+                <div class="form-header">
+                    <h2>Cadastrar</h2>
+                </div>
 
-            <button type="submit">Cadastrar</button>
-            <!-- <button type="reset">Cancelar</button> -->
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone">
+                </div>
+                <div class="form-group">
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" id="data-nascimento" name="data-nascimento" required>
+                </div>
+                <div class="form-group">
+                    <label for="genero">Gênero:</label>
+                    <select id="genero" name="genero">
+                        <option value="">Selecione...</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirma-senha">Confirmar Senha</label>
+                    <input type="password" id="confirma-senha" name="confirma-senha" required>
+                </div>
+                <div class="form-group">
+                    <input class="botaoCadastrar" type="submit" value="Cadastrar"></input>
+                </div>
         </form>
-    </div>
+        </div>
 
 
-    <script src="cadastro.js"></script>
+        <script src="./js/cadastro.js"></script>
 </body>
 
 </html>
