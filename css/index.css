@@ -246,8 +246,7 @@ main {
 
 footer {
   background-image: url("../img/fundo-rodape.png");
-  padding: 20px 200px 20px 200px;
-  height: 50px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
@@ -284,7 +283,6 @@ footer li {
   }
   footer {
     grid-column: 1/1;
-    padding: 0;
     align-items: center;
     justify-content: center;
   }
@@ -318,7 +316,9 @@ footer li {
     display: none;
   }
   .busca-div input {
-    width: 92%;
+    width: 88%;
+    border-radius: 0px;
+    height: 2rem;
   }
   .footer-menu {
     display: none;
