@@ -8,6 +8,7 @@ footer {
     margin: 40px 0px 10px 0px;
     justify-content: center;
     color: gray;
+    text-align: center;
 }
 
 footer img {
@@ -27,7 +28,7 @@ figcaption {
     text-align: center;
 }
 
-#div-centro-distribuicao {
+#imagem-maria {
     width: 500px;
     margin: auto;
 }
@@ -38,7 +39,36 @@ figcaption {
 }
 
 #sobre-header {
-    background-image: url("../img/sobre-background.jpg");
+    background-image: url("../img/background-color-rose.png");
     padding: 9px;
     margin-top: 25px;
+    text-align: center;
+}
+
+#sobre-header a {
+    margin-left: 10px;
+}
+
+.lista-horizontal{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+.item-horizontal{
+    float: left;
+}
+
+.item-horizontal a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.item-horizontal a:hover{
+    background-color: #111111;
 }
