@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="./css/index.css">
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <title>Luxo Cosméticos</title>
 </head>
 
@@ -69,18 +70,18 @@
     </div>
   </main>
 
-  <footer>
-    <div class="footer-logo">
-      <img src="img/logo.png" alt="Logo" width="120px">
-    </div>
+  <div class="weather">
+    <h1>Previsão do tempo</h1>
+    <form>
+      <label for="city">Cidade:</label>
+      <input type="text" id="city" name="city">
+      <button type="submit">Buscar</button>
+    </form>
+    <section id="result"></section>
+  </div>
 
-    <div class="footer-menu">
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-instagram"></a>
-      <a href="#" class="fa fa-youtube"></a>
-    </div>
-  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/index.js"></script>
 </body>
 

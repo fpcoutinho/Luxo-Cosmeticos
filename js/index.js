@@ -24,3 +24,75 @@ perfumes.forEach((perfume) => {
   li.appendChild(price);
   ulPerfumes.appendChild(li);
 });
+
+const form = document.querySelector('form');
+const resultSection = document.getElementById('result');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // evita que a página seja recarregada
+  const city = form.elements.city.value;
+  const url = `https://goweather.herokuapp.com/weather/${city}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const temperature = data.temperature;
+      const description = data.description;
+      const humidity = data.humidity;
+      const wind = data.wind;
+      console.log(data);
+
+      resultSection.innerHTML = `
+        <h2>${city}</h2>
+        <p>Temperatura: ${temperature}</p>
+        <p>Vento: ${wind}</p>
+        <p>Description: ${description}</p>
+
+
+      `;
+    })
+    .catch(error => {
+      resultSection.innerHTML = `<p>Não foi possível obter a previsão do tempo para ${city}.</p>`;
+    });
+});
+
+$(function () {
+  const cities = [
+    "São Paulo",
+    "Rio de Janeiro",
+    "Belo Horizonte",
+    "Curitiba",
+    "Porto Alegre",
+    "Salvador",
+    "Fortaleza",
+    "Recife",
+    "Brasília",
+    "Manaus",
+    "Belém",
+    "Goiânia",
+    "São Luís",
+    "Campinas",
+    "Guarulhos",
+    "São Bernardo do Campo",
+    "Osasco",
+    "Santo André",
+    "Ribeirão Preto",
+    "Sorocaba",
+    "São José dos Campos",
+    "Uberlândia",
+    "Joinville",
+    "Florianópolis",
+    "Natal",
+    "Maceió",
+    "Vitória",
+    "João Pessoa",
+    "Aracaju",
+    "Cuiabá",
+    "Campo Grande",
+    "Teresina",
+    "Palmas"
+  ];
+  $("#city").autocomplete({
+    source: cities
+  });
+});
