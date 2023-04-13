@@ -245,7 +245,7 @@ footer .footer-logo {
 }
 
 footer .footer-logo img {
-  height: 30px;
+  height: 20px;
   width: auto;
   border-radius: 50%;
 }
@@ -268,8 +268,8 @@ footer .footer-menu a {
 footer .footer-menu .fa {
   text-align: center;
   text-decoration: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 4px;
 }
 
