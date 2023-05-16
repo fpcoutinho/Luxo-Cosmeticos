@@ -32,10 +32,11 @@ mongoose
 
 // routes
 app.get("*", checkUser);
-app.get("/", (req, res) => res.render("home"));
-app.get("/sobre", (req, res) => res.render("sobre"));
+app.get("/", (req, res) => res.render("home", { css: "home.css" }));
+app.get("/home", (req, res) => res.redirect("/"));
+app.get("/sobre", (req, res) => res.render("sobre", { css: "sobre.css" }));
 app.use("/produto", siteRoutes);
 app.use("/", authRoutes);
 app.use((req, res) => {
-  res.status(404).render("404", { title: "404" });
+  res.status(404).render("404", { css: "home.css" });
 });

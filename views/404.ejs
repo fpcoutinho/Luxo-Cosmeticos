@@ -1,9 +1,8 @@
-extends layout
+<%- include('layout') -%>
+<%- include('partials/header') -%>
+<main>
+  <h1>404</h1>
+  <h2>Page not found</h2>
+</main>
 
-block content
-  include ./partials/header.pug
-
-  h1 404
-  p Page not found
-
-  include ./partials/footer.pug
+<%- include('partials/footer') -%>
