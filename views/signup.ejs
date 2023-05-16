@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <title>Cadastrar Usuário</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/cadastro.css">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-</head>
+<%- include('layout'); -%>
+<%- include('partials/header'); -%>
 
 <body>
     <header>
@@ -16,14 +8,14 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="index.ejs">Início</a></li>
+                <li><a href="sobre.ejs">Sobre</a></li>
             </ul>
         </div>
     </header>
 
     <main>
-        <form class="form-cosmetico" action="index.html" method="post">
+        <form class="form-cosmetico" action="index.ejs" method="post">
             <div class="form">
                 <div class="form-header">
                     <h2>Cadastrar</h2>
@@ -65,11 +57,9 @@
                 <div class="form-group">
                     <input class="botaoCadastrar" type="submit" value="Cadastrar"></input>
                 </div>
+            </div>
         </form>
-        </div>
+    </main>
 
-
-        <script src="./js/cadastro.js"></script>
-</body>
-
-</html>
+    <%- include('partials/footer'); -%>
+    <script src="../js/cadastro.js"></script>

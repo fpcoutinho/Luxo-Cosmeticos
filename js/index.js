@@ -1,16 +1,16 @@
 // preencher ul com os produtos do img/produtos/perfumes
 const ulPerfumes = document.querySelector(".lista-perfumes");
 const perfumes = [
-  "img/produtos/perfumes/1.png",
-  "img/produtos/perfumes/2.png",
-  "img/produtos/perfumes/3.png",
-  "img/produtos/perfumes/4.png",
-  "img/produtos/perfumes/5.png",
-  "img/produtos/perfumes/6.png",
-  "img/produtos/perfumes/7.png",
-  "img/produtos/perfumes/8.png",
-  "img/produtos/perfumes/9.png",
-  "img/produtos/perfumes/10.png",
+  "../public/img/produtos/perfumes/1.png",
+  "../public/img/produtos/perfumes/2.png",
+  "../public/img/produtos/perfumes/3.png",
+  "../public/img/produtos/perfumes/4.png",
+  "../public/img/produtos/perfumes/5.png",
+  "../public/img/produtos/perfumes/6.png",
+  "../public/img/produtos/perfumes/7.png",
+  "../public/img/produtos/perfumes/8.png",
+  "../public/img/produtos/perfumes/9.png",
+  "../public/img/produtos/perfumes/10.png",
 ];
 
 perfumes.forEach((perfume) => {

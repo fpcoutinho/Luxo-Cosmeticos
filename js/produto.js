@@ -116,7 +116,7 @@ const produtoFactory = (
   };
 };
 
-//função de adicionar produto com inputs do form de produto.html
+//função de adicionar produto com inputs do form de produto.ejs
 const formularioDeProduto = document.querySelector(".form-cosmetico");
 formularioDeProduto.addEventListener("submit", (e) => {
   e.preventDefault();
