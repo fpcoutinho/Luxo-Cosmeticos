@@ -4,7 +4,13 @@ require("dotenv").config();
 
 // Handle Errors
 const handleErrors = (err) => {
-  let errors = { name: "", surname: "", email: "", password: "" };
+  let errors = {
+    name: "",
+    surname: "",
+    dataNascimento: "",
+    email: "",
+    password: "",
+  };
 
   // Validating all errors
   if (err.message.includes("User validation failed")) {
@@ -45,16 +51,15 @@ const signup_get = (req, res) => {
 };
 
 const signup_post = async (req, res, next) => {
-  const { name, surname, email, password, isadmin } = req.body;
+  const { name, surname, email, dataNascimento, password } = req.body;
 
   try {
     const user = await User.create({
       name,
       surname,
       email,
+      dataNascimento,
       password,
-      membership: false,
-      isadmin,
     });
     const token = createToken(user._id);
     res.cookie("jwt", token, {

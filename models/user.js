@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { isEmail } = require("validator");
+const { isEmail, isDate } = require("validator");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
@@ -24,14 +24,17 @@ const UserSchema = new Schema(
       lowercase: true,
       validate: [isEmail, "Por favor insira um e-mail válido."],
     },
+    dataNascimento: {
+      type: Date,
+      required: [true, "Por favor insira uma data de nascimento."],
+      validate: [isDate, "Por favor insira uma data de nascimento válida."],
+    },
     password: {
       type: String,
       required: [true, "Por favor insira uma senha."],
       minlength: [6, "A senha deve ter no mínimo 6 caracteres."],
       maxlength: [100, "A senha deve ter no máximo 100 caracteres."],
     },
-    membership: { type: Boolean, required: true },
-    isadmin: { type: Boolean, required: true },
   },
   { timestamps: true }
 );
