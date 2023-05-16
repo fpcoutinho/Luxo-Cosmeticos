@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/authRoutes");
 const { requireAuth } = require("./middleware/authMiddleware");
@@ -11,6 +12,7 @@ const siteRoutes = require("./routes/siteRoutes");
 const app = express();
 
 // middleware
+app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

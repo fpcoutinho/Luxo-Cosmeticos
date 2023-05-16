@@ -184,5 +184,3 @@ preco.addEventListener("input", (event) => {
     preco.setCustomValidity("");
   }
 });
-
-export { listaProdutos, produtoFactory };
