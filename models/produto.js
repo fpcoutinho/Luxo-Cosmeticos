@@ -38,8 +38,7 @@ const ProdutoSchema = new Schema(
       required: [true, "Por favor, insira um gênero."],
     },
     imagem: {
-      data: Buffer,
-      contentType: String,
+      type: String,
       required: [true, "Por favor, insira uma imagem."],
     },
   },

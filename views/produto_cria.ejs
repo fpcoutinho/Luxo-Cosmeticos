@@ -2,7 +2,7 @@
 <%- include('partials/header'); -%>
 
 <main>
-	<form class="form-cosmetico">
+	<form>
 		<form-header>
 			<h2>Cadastro de Produto</h2>
 		</form-header>
@@ -29,25 +29,25 @@
 		<form-group>
 			<label for="categoria">Categoria</label>
 			<select name="categoria" id="categoria" required>
-				<option value="1">Perfume</option>
-				<option value="2">Produtos de Pele</option>
-				<option value="3">Produtos de Banho</option>
-				<option value="4">Maquiagem</option>
+				<option value="Perfume">Perfume</option>
+				<option value="Pele">Produtos de Pele</option>
+				<option value="Banho">Produtos de Banho</option>
+				<option value="Maquiagem">Maquiagem</option>
 			</select>
 			<div class="error categoria" id="erroCategoria"></div>
 		</form-group>
 		<form-group>
 			<label for="genero">Genero</label>
 			<select name="genero" id="genero" required>
-				<option value="1">Masculino</option>
-				<option value="2">Feminino</option>
-				<option value="3">Unissex</option>
+				<option value="Masculino">Masculino</option>
+				<option value="Feminino">Feminino</option>
+				<option value="Unissex">Unissex</option>
 			</select>
 			<div class="error genero" id="erroGenero"></div>
 		</form-group>
 		<form-group>
 			<label for="imagem">Imagem</label>
-			<input type="file" name="imagem" id="imagem" required>
+			<input type="text" name="imagem" id="imagem" required>
 			<div class="error imagem" id="erroImagem"></div>
 		</form-group>
 		<form-group>
