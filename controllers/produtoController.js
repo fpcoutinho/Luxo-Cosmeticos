@@ -39,7 +39,7 @@ const produto_cria_post = async (req, res) => {
       categoria,
       genero,
       descricao,
-      imagem: file.path,
+      imagem: file.path.slice(7, file.path.length),
     });
     res.status(200).json({ produto: produto._id });
   } catch (err) {

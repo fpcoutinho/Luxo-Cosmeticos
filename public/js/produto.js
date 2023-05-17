@@ -56,7 +56,6 @@ form.addEventListener("submit", async (e) => {
   const imagem = form.imagem.value;
 
   try {
-    console.log("antes do fetch!");
     const res = await fetch("/produto/cria", {
       method: "POST",
       body: JSON.stringify({
