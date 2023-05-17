@@ -74,7 +74,6 @@ form.addEventListener("submit", async (e) => {
       },
     });
     const data = await res.json();
-    console.log(data);
 
     if (data.errors) {
       nomeError.textContent = data.errors.nome;

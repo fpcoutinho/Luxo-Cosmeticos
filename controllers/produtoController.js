@@ -1,4 +1,5 @@
 const Produto = require("../models/produto");
+const fs = require("fs");
 
 const handleErrors = (err) => {
   let errors = {
@@ -26,8 +27,8 @@ const produto_cria_get = (req, res) => {
 };
 
 const produto_cria_post = async (req, res) => {
-  const { nome, marca, volume, preco, categoria, genero, descricao, imagem } =
-    req.body;
+  const { nome, marca, volume, preco, categoria, genero, descricao } = req.body;
+  const file = req.file;
 
   try {
     const produto = await Produto.create({
@@ -38,7 +39,7 @@ const produto_cria_post = async (req, res) => {
       categoria,
       genero,
       descricao,
-      imagem,
+      imagem: file.path,
     });
     res.status(200).json({ produto: produto._id });
   } catch (err) {
@@ -48,11 +49,40 @@ const produto_cria_post = async (req, res) => {
 };
 
 const produto_details = async (req, res) => {
-  res.render("produto_details", { css: "form.css" });
+  const id = req.params.id;
+  try {
+    const produto = await Produto.findById(id);
+    res.render("produto_details", { css: "form.css", produto });
+  } catch (err) {
+    res.status(404).json({ message: "Produto não encontrado" });
+  }
 };
 
+const produto_getAll = async (req, res) => {
+  try {
+    const produtos = await Produto.find().sort({ nome: 1 });
+  } catch (err) {
+    res.status(500).json({
+      message: err.message || "Algum erro ocorreu ao buscar todos os produtos",
+    });
+  }
+};
+
+const produto_delete = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const produto = await Produto.findById(id);
+    fs.unlinkSync(produto.imagem);
+    await Produto.findByIdAndDelete(id);
+    res.status(200).json({ message: "Produto deletado com sucesso" });
+  } catch (err) {
+    res.status(404).json({ message: "Produto não encontrado" });
+  }
+};
 module.exports = {
   produto_cria_get,
   produto_cria_post,
   produto_details,
+  produto_getAll,
+  produto_delete,
 };

@@ -5,8 +5,9 @@ const path = require("path");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 
+const mainRoutes = require("./routes/mainRoutes");
 const authRoutes = require("./routes/authRoutes");
-const siteRoutes = require("./routes/siteRoutes");
+const produtoRoutes = require("./routes/produtoRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const { requireAuth } = require("./middleware/authMiddleware");
@@ -37,12 +38,10 @@ mongoose
 
 // routes
 app.get("*", checkUser);
-app.get("/", (req, res) => res.render("home", { css: "home.css" }));
-app.get("/home", (req, res) => res.redirect("/"));
-app.get("/sobre", (req, res) => res.render("sobre", { css: "sobre.css" }));
-app.use("/produto", siteRoutes);
+app.use("/", mainRoutes);
+app.use("/auth", authRoutes);
 app.use("/user", requireAuth, userRoutes);
-app.use("/", authRoutes);
+app.use("/produto", produtoRoutes);
 app.use((req, res) => {
   res.status(404).render("404", { css: "home.css" });
 });

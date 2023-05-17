@@ -44,7 +44,7 @@ form.addEventListener("submit", async (e) => {
   const confirmPassword = form.confirmPassword.value;
 
   try {
-    const res = await fetch("/signup", {
+    const res = await fetch("/auth/signup", {
       method: "POST",
       body: JSON.stringify({
         name,
