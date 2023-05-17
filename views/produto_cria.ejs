@@ -1,66 +1,64 @@
-<%- include('./layout'); -%>
-<%- include('./partials/header'); -%>
+<%- include('layout'); -%>
+<%- include('partials/header'); -%>
 
 <main>
 	<form class="form-cosmetico">
-		<div class=" form">
-			<div class="form-header">
-				<h2>Cadastro de Produto</h2>
-			</div>
-			<div class="form-group">
-				<label for="nome">Nome</label>
-				<input type="text" name="nome" id="nome" placeholder="Nome do produto" required>
-				<div class="error nome" id="erroNome"></div>
-			</div>
-			<div class="form-group">
-				<label for="marca">Marca</label>
-				<input type="text" name="marca" id="marca" placeholder="Marca do produto" required>
-				<div class="error marca" id="erroMarca"></div>
-			</div>
-			<div class="form-group">
-				<label for="volume">Volume</label>
-				<input type="number" name="volume" id="volume" placeholder="Volume do produto (ml)" required>
-				<div class="error volume" id="erroVolume"></div>
-			</div>
-			<div class="form-group">
-				<label for="preco">Preço</label>
-				<input type="number" name="preco" id="preco" placeholder="Preço do produto (R$)" required>
-				<div class="error preco" id="erroPreco"></div>
-			</div>
-			<div class="form-group">
-				<label for="categoria">Categoria</label>
-				<select name="categoria" id="categoria" required>
-					<option value="1">Perfume</option>
-					<option value="2">Produtos de Pele</option>
-					<option value="3">Produtos de Banho</option>
-					<option value="4">Maquiagem</option>
-				</select>
-				<div class="error categoria" id="erroCategoria"></div>
-			</div>
-			<div class="form-group">
-				<label for="genero">Genero</label>
-				<select name="genero" id="genero" required>
-					<option value="1">Masculino</option>
-					<option value="2">Feminino</option>
-					<option value="3">Unissex</option>
-				</select>
-				<div class="error genero" id="erroGenero"></div>
-			</div>
-			<div class="form-group">
-				<label for="imagemUrl">URL da Imagem</label>
-				<input type="text" name="imagemUrl" id="imagemUrl" placeholder="URL da imagem do produto" required>
-				<div class="error imagemUrl" id="erroImagemUrl"></div>
-			</div>
-			<div class="form-group">
-				<label for="descricao">Descrição</label>
-				<textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Descrição do produto"
-					required></textarea>
-				<div class="error descricao" id="erroDescricao"></div>
-			</div>
-			<div class="form-group">
-				<input class="botaoCadastrar" type="submit" value="Cadastrar"></input>
-			</div>
-		</div>
+		<form-header>
+			<h2>Cadastro de Produto</h2>
+		</form-header>
+		<form-group>
+			<label for="nome">Nome</label>
+			<input type="text" name="nome" id="nome" placeholder="Nome do produto" required>
+			<div class="error nome" id="erroNome"></div>
+		</form-group>
+		<form-group>
+			<label for="marca">Marca</label>
+			<input type="text" name="marca" id="marca" placeholder="Marca do produto" required>
+			<div class="error marca" id="erroMarca"></div>
+		</form-group>
+		<form-group>
+			<label for="volume">Volume</label>
+			<input type="number" name="volume" id="volume" placeholder="Volume do produto (ml)" required>
+			<div class="error volume" id="erroVolume"></div>
+		</form-group>
+		<form-group>
+			<label for="preco">Preço</label>
+			<input type="number" name="preco" id="preco" placeholder="Preço do produto (R$)" required>
+			<div class="error preco" id="erroPreco"></div>
+		</form-group>
+		<form-group>
+			<label for="categoria">Categoria</label>
+			<select name="categoria" id="categoria" required>
+				<option value="1">Perfume</option>
+				<option value="2">Produtos de Pele</option>
+				<option value="3">Produtos de Banho</option>
+				<option value="4">Maquiagem</option>
+			</select>
+			<div class="error categoria" id="erroCategoria"></div>
+		</form-group>
+		<form-group>
+			<label for="genero">Genero</label>
+			<select name="genero" id="genero" required>
+				<option value="1">Masculino</option>
+				<option value="2">Feminino</option>
+				<option value="3">Unissex</option>
+			</select>
+			<div class="error genero" id="erroGenero"></div>
+		</form-group>
+		<form-group>
+			<label for="imagem">Imagem</label>
+			<input type="file" name="imagem" id="imagem" required>
+			<div class="error imagem" id="erroImagem"></div>
+		</form-group>
+		<form-group>
+			<label for="descricao">Descrição</label>
+			<textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Descrição do produto"
+				required></textarea>
+			<div class="error descricao" id="erroDescricao"></div>
+		</form-group>
+		<form-group>
+			<input class="botaoCadastrar" type="submit" value="Cadastrar"></input>
+		</form-group>
 	</form>
 </main>
 

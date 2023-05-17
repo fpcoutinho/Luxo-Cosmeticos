@@ -37,9 +37,10 @@ const ProdutoSchema = new Schema(
       type: String,
       required: [true, "Por favor, insira um gênero."],
     },
-    imagemUrl: {
-      type: String,
-      required: [true, "Por favor, insira uma url de uma imagem."],
+    imagem: {
+      data: Buffer,
+      contentType: String,
+      required: [true, "Por favor, insira uma imagem."],
     },
   },
   { timestamps: true }

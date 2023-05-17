@@ -1,21 +1,26 @@
 <%- include('layout'); -%>
 <%- include('partials/header'); -%>
 
-<form>
-  <h2>Login</h2>
-  <form-group>
-    <label for="email">Email</label>
-    <input type="text" name="email" />
-    <div class="email error"></div>
-  </form-group>
-  <form-group>
-    <label for="password">Password</label>
-    <input type="password" name="password" />
-    <div class="password error"></div>
-  </form-group>
-  <button>login</button>
-</form>
+<main>
+  <form>
+    <h2>Login</h2>
+    <form-group>
+      <label for="email">Email</label>
+      <input type="text" name="email" />
+      <div class="email error"></div>
+    </form-group>
+    <form-group>
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+      <div class="password error"></div>
+    </form-group>
+    <button>login</button>
+  </form>
+</main>
 
 <%- include('partials/footer'); -%>
 
 <script src="../js/login.js"></script>
+</body>
+
+</html>

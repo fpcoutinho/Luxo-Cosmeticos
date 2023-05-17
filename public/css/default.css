@@ -1,0 +1,31 @@
+:root {
+  --bg: #fff;
+  --header-bg: #ffc6c6;
+  --primary: #0f172a;
+  --secondary: #334155;
+  --h: #7f1d1d;
+  --h-hover: #991b1b;
+  --label: #64748b;
+  --cards: #f4f6f8;
+  --vermelho: #ee223b;
+  --rosa: #ffc6c6;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--primary);
+  height: 100%;
+}
+
+body {
+  font-family: "Inter";
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  height: 100%;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
