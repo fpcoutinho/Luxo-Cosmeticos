@@ -29,3 +29,8 @@ body > footer {
   position: sticky;
   top: 100vh;
 }
+
+main {
+  padding-top: 100px;
+  padding-bottom: 1rem;
+}
