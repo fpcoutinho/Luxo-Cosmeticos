@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { isEmail, isDate } = require("validator");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
+const { DateTime } = require("luxon");
 
 const UserSchema = new Schema(
   {
@@ -61,6 +62,23 @@ UserSchema.virtual("fullname").get(function () {
 
 UserSchema.virtual("url").get(function () {
   return `/user/${this._id}`;
+});
+
+UserSchema.virtual("extenso").get(function () {
+  return {
+    dataNascimento: DateTime.fromJSDate(this.dataNascimento, {
+      zone: "utc",
+      lang: "pt",
+    }).toLocaleString(DateTime.DATE_FULL),
+  };
+});
+
+UserSchema.virtual("formatted").get(function () {
+  return {
+    dataNascimento: DateTime.fromJSDate(this.dataNascimento, {
+      zone: "utc",
+    }).toFormat("yyyy-MM-dd"),
+  };
 });
 
 module.exports = mongoose.model("User", UserSchema);

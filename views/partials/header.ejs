@@ -10,25 +10,29 @@
         shopping_cart
       </i>
     </a>
+    <% if (!user) { %>
     <a href="/login">
-      <i class="material-symbols-outlined">
-        person
-      </i>
-    </a>
-    <a href="#wishes">
-      <i class="material-symbols-outlined">
-        favorite
-      </i>
-    </a>
-    <a href="/sobre">
-      <i class="material-symbols-outlined">
-        info
-      </i>
-    </a>
-    <a href="#help">
-      <i class="material-symbols-outlined">
-        help
-      </i>
-    </a>
+      <%} else { %>
+      <a href="/user/config">
+        <% } %>
+        <i class="material-symbols-outlined">
+          person
+        </i>
+      </a>
+      <a href="#wishes">
+        <i class="material-symbols-outlined">
+          favorite
+        </i>
+      </a>
+      <a href="/sobre">
+        <i class="material-symbols-outlined">
+          info
+        </i>
+      </a>
+      <a href="#help">
+        <i class="material-symbols-outlined">
+          help
+        </i>
+      </a>
   </div>
 </header>

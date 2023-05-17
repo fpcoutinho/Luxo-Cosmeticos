@@ -1,0 +1,19 @@
+<%- include('layout'); -%>
+<%- include('partials/header'); -%>
+
+<main>
+  <nav>
+    <h2>Oi, <%=user.fullname%>.</h2>
+    <a href="/logout">Log out</a>
+  </nav>
+  <div class="info">
+    <p>Seja bem-vindo ao nosso site!</p>
+    <p>Seu email é: <%=user.email%></p>
+    <p>Sua data de nascimento é: <%=user.extenso.dataNascimento%></p>
+  </div>
+</main>
+
+<%- include('partials/footer'); -%>
+</body>
+
+</html>
