@@ -9,9 +9,10 @@
         <form-group>
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" required>
+            <div class="name error"></div>
             <label for="surname">Sobrenome</label>
             <input type="text" id="surname" name="surname" required>
-            <div class="name error"></div>
+            <div class="surname error"></div>
         </form-group>
         <form-group>
             <label for="email">E-mail</label>
@@ -34,7 +35,7 @@
             <div class="confirmPassword error"></div>
         </form-group>
         <form-group>
-            <input class="botaoCadastrar" type="submit" value="Cadastrar"></input>
+            <button type="submit">Sign Up</button>
         </form-group>
     </form>
 </main>

@@ -47,7 +47,7 @@ const createToken = (id) => {
 
 // Authentication controller functions
 const signup_get = (req, res) => {
-  res.render("signup", { css: "auth.css" });
+  res.render("signup", { css: "form.css" });
 };
 
 const signup_post = async (req, res, next) => {
@@ -74,7 +74,7 @@ const signup_post = async (req, res, next) => {
 };
 
 const login_get = (req, res) => {
-  res.render("login", { css: "auth.css" });
+  res.render("login", { css: "form.css" });
 };
 
 const login_post = async (req, res) => {
