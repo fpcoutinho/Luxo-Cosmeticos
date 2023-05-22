@@ -69,7 +69,9 @@ const produto_delete = async (req, res) => {
   const id = req.params.id
   try {
     const produto = await Produto.findById(id)
-    fs.unlinkSync(produto.imagem)
+    //unlink dando erro por algum motivo, mas vamos ter que encontrar outra forma de hospedar mesmo
+    //fs.unlinkSync(produto.imagem)
+    console.log(produto)
     await Produto.findByIdAndDelete(id)
     res.status(200).json({ message: 'Produto deletado com sucesso' })
   } catch (err) {
