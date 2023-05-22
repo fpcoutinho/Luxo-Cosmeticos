@@ -33,9 +33,9 @@ mongoose
 // routes
 app.get('/', (req, res) =>
   res.send(
-    'Bem vindo à API da Luxo-Cosméticos.\n\nAcesse /auth para autenticação.\n\nAcesse /user para visualizar os usuários.\n\nAcesse /produto para visualizar os produtos.'
+    '<h1>Bem vindo à API da Luxo-Cosméticos</h1><ol><li>Acesse /auth para autenticação.</li><li>Acesse /user para visualizar os usuários.</li><li>Acesse /produto para visualizar os produtos.</li></ol>'
   )
 )
 app.use('/auth', authRoutes)
-app.use('/user', requireAuth, userRoutes)
-app.use('/produto', produtoRoutes)
+app.use('/users', requireAuth, userRoutes)
+app.use('/produtos', produtoRoutes)
