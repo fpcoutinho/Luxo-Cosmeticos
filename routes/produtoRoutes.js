@@ -1,21 +1,15 @@
-const { Router } = require("express");
-const produtoController = require("../controllers/produtoController");
-const upload = require("../middleware/multer");
+const { Router } = require('express')
+const produtoController = require('../controllers/produtoController')
+const upload = require('../middleware/multer')
 
-const router = Router();
+const router = Router()
 
-router.get("/cria", produtoController.produto_cria_get);
+router.get('/getAll', produtoController.produto_getAll)
 
-router.post(
-  "/cria",
-  upload.single("file"),
-  produtoController.produto_cria_post
-);
+router.get('/:id', produtoController.produto_details)
 
-router.delete("/:id", produtoController.produto_delete);
+router.post('/cria', upload.single('file'), produtoController.produto_cria_post)
 
-router.get("/getAll", produtoController.produto_getAll);
+router.delete('/:id', produtoController.produto_delete)
 
-router.get("/:id", produtoController.produto_details);
-
-module.exports = router;
+module.exports = router
