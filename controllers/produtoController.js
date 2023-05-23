@@ -1,4 +1,5 @@
 const Produto = require('../models/produto')
+const fs = require('fs')
 
 const handleErrors = (err) => {
   let errors = {
@@ -44,7 +45,7 @@ const produto_cria_post = async (req, res) => {
       categoria,
       genero,
       descricao,
-      imagem: file.path.slice(7, file.path.length),
+      imagem: file.path,
     })
     res
       .status(200)
@@ -90,8 +91,7 @@ const produto_delete = async (req, res) => {
   const id = req.params.id
   try {
     const produto = await Produto.findById(id)
-    //unlink dando erro por algum motivo, mas vamos ter que encontrar outra forma de hospedar mesmo
-    //fs.unlinkSync(produto.imagem)
+    fs.unlinkSync(produto.imagem)
     console.log(produto)
     await Produto.findByIdAndDelete(id)
     res.status(200).json({ message: 'Produto deletado com sucesso' })
