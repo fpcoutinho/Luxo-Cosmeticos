@@ -1,8 +1,9 @@
-const { Router } = require("express");
-const produtoController = require("../controllers/userController");
+const { Router } = require('express')
+const produtoController = require('../controllers/userController')
 
-const router = Router();
+const router = Router()
 
-router.get("/config", produtoController.user_config_get);
+router.get('/', produtoController.get_all_users)
+router.get('/:id', produtoController.get_user)
 
-module.exports = router;
+module.exports = router

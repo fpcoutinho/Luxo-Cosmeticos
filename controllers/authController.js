@@ -48,8 +48,8 @@ const createToken = (id) => {
 // Authentication controller functions
 const signup_post = async (req, res, next) => {
   const { name, surname, email, dataNascimento, password } = req.body
-
   try {
+    console.log(req.body)
     const user = await User.create({
       name,
       surname,
@@ -64,6 +64,7 @@ const signup_post = async (req, res, next) => {
     })
     res.status(201).json({ user: user._id })
   } catch (err) {
+    console.log(err.message)
     const errors = handleErrors(err)
     res.status(400).json({ errors })
   }
@@ -88,6 +89,7 @@ const login_post = async (req, res) => {
 
 const logout = (req, res) => {
   res.cookie('jwt', '', { maxAge: 1 })
+  res.status(200).json({ message: 'Usuário deslogado com sucesso!' })
 }
 
 module.exports = {

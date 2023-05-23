@@ -1,5 +1,4 @@
 const Produto = require('../models/produto')
-const fs = require('fs')
 
 const handleErrors = (err) => {
   let errors = {

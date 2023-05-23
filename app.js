@@ -37,5 +37,5 @@ app.get('/', (req, res) =>
   )
 )
 app.use('/auth', authRoutes)
-app.use('/users', requireAuth, userRoutes)
+app.use('/users', userRoutes)
 app.use('/produtos', produtoRoutes)
