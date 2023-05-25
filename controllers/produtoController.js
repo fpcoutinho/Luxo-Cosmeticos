@@ -1,5 +1,8 @@
 const Produto = require('../models/produto')
 const fs = require('fs')
+const utils = require('util')
+const unlinkFile = utils.promisify(fs.unlink)
+const { uploadFile, getFileStream } = require('../middleware/s3')
 
 const handleErrors = (err) => {
   let errors = {
@@ -35,7 +38,8 @@ const produto_details = async (req, res) => {
 const produto_cria_post = async (req, res) => {
   const { nome, marca, volume, preco, categoria, genero, descricao } = req.body
   const file = req.file
-
+  const result = await uploadFile(file)
+  await unlinkFile(file.path)
   try {
     const produto = await Produto.create({
       nome,
@@ -45,7 +49,7 @@ const produto_cria_post = async (req, res) => {
       categoria,
       genero,
       descricao,
-      imagem: file.path,
+      imagem: result.Location,
     })
     res
       .status(200)
@@ -60,7 +64,8 @@ const produto_update = async (req, res) => {
   const id = req.params.id
   const { nome, marca, volume, preco, categoria, genero, descricao } = req.body
   const file = req.file
-
+  const result = await uploadFile(file)
+  await unlinkFile(file.path)
   try {
     const produto = await Produto.findByIdAndUpdate(
       id,
@@ -72,7 +77,7 @@ const produto_update = async (req, res) => {
         categoria: categoria,
         genero: genero,
         descricao: descricao,
-        imagem: file.path.slice(7, file.path.length),
+        imagem: result.Location,
       },
       { runValidators: true }
     )
@@ -91,8 +96,6 @@ const produto_delete = async (req, res) => {
   const id = req.params.id
   try {
     const produto = await Produto.findById(id)
-    fs.unlinkSync(produto.imagem)
-    console.log(produto)
     await Produto.findByIdAndDelete(id)
     res.status(200).json({ message: 'Produto deletado com sucesso' })
   } catch (err) {
@@ -104,6 +107,10 @@ const produto_getAll = async (req, res) => {
   try {
     const produtos = await Produto.find().sort({ nome: 1 })
     res.status(200).json(produtos)
+    for (let i = 0; i < produtos.length; i++) {
+      const readStream = getFileStream(produtos[i].imagem)
+      readStream.pipe(res)
+    }
   } catch (err) {
     res.status(500).json({
       message: err.message || 'Algum erro ocorreu ao buscar todos os produtos',

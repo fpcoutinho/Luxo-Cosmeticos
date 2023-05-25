@@ -31,9 +31,10 @@ mongoose
   .catch((err) => console.log(err))
 
 // routes
+
 app.get('/', (req, res) =>
   res.send(
-    '<h1>Bem vindo à API da Luxo-Cosméticos</h1><ol><li>Acesse /auth para autenticação.</li><li>Acesse /user para visualizar os usuários.</li><li>Acesse /produto para visualizar os produtos.</li></ol>'
+    '<h1>Bem vindo à API da Luxo-Cosméticos</h1><ol><li>Acesse /auth para autenticação.</li><li>Acesse /user para visualizar os usuários.</li><li>Acesse /produtos para visualizar os produtos.</li></ol>'
   )
 )
 app.use('/auth', authRoutes)
