@@ -111,12 +111,47 @@ const produto_getAll = async (req, res) => {
   }
 }
 
-const produto_Filter = async (req, res) => {
-  const param = req.params.param
+const produto_filter_categoria = async (req, res) => {
+  const param = Object.values(req.params)[0]
+
   try {
-    const produtos = await Produto.find({ param: param }).sort({ nome: 1 })
-    if (produtos.length === 0)
+    const produtos = await Produto.find({ categoria: param }).sort({ nome: 1 })
+    if (produtos.length === 0) {
       res.status(404).json({ message: 'Nenhum produto encontrado' })
+      return
+    }
+    res.status(200).json(produtos)
+  } catch (err) {
+    res.status(500).json({
+      message: err.message || 'Algum erro ocorreu ao buscar todos os produtos',
+    })
+  }
+}
+const produto_filter_genero = async (req, res) => {
+  const param = Object.values(req.params)[0]
+
+  try {
+    const produtos = await Produto.find({ genero: param }).sort({ nome: 1 })
+    if (produtos.length === 0) {
+      res.status(404).json({ message: 'Nenhum produto encontrado' })
+      return
+    }
+    res.status(200).json(produtos)
+  } catch (err) {
+    res.status(500).json({
+      message: err.message || 'Algum erro ocorreu ao buscar todos os produtos',
+    })
+  }
+}
+const produto_filter_marca = async (req, res) => {
+  const param = Object.values(req.params)[0]
+
+  try {
+    const produtos = await Produto.find({ marca: param }).sort({ nome: 1 })
+    if (produtos.length === 0) {
+      res.status(404).json({ message: 'Nenhum produto encontrado' })
+      return
+    }
     res.status(200).json(produtos)
   } catch (err) {
     res.status(500).json({
@@ -131,5 +166,7 @@ module.exports = {
   produto_update,
   produto_delete,
   produto_getAll,
-  produto_Filter,
+  produto_filter_categoria,
+  produto_filter_genero,
+  produto_filter_marca,
 }

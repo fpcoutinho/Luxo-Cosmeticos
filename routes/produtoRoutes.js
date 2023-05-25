@@ -7,11 +7,11 @@ const router = Router()
 // GETS
 router.get('/', produtoController.produto_getAll)
 
-router.get('/categoria/:categoria', produtoController.produto_Filter)
+router.get('/categoria/:categoria', produtoController.produto_filter_categoria)
 
-router.get('/genero/:genero', produtoController.produto_Filter)
+router.get('/genero/:genero', produtoController.produto_filter_genero)
 
-router.get('/marca/:marca', produtoController.produto_Filter)
+router.get('/marca/:marca', produtoController.produto_filter_marca)
 
 // CRUD
 
