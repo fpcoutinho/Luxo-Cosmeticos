@@ -12,4 +12,8 @@ Visualização feita com Vue.js e Tailwind css, e o Back-End em formato de API R
 
 ## Detalhes do projeto
 
-Textos e imagens que descrevam seu projeto, suas conquistas, seus desafios, próximos passos, etc...
+O projeto atualmente consiste em uma aplicação web que simula uma loja online de cosméticos. A interface do usuário é construída utilizando Vue.js e Tailwind CSS, proporcionando uma experiência visual atraente e responsiva. O Back-End é implementado como uma API REST utilizando Node.js, mongoDB e AWS S3. A comunicação entre o front-end e o back-end é realizada através de JSON, permitindo a transferência eficiente de dados. A autenticação de usuários é feita utilizando JWT (JSON Web Tokens), garantindo a segurança e a privacidade das informações dos clientes.
+
+Através dessa aplicação, os usuários podem explorar uma ampla variedade de cosméticos disponíveis para compra, visualizando detalhes do produto, imagens e preços. Eles também podem adicionar produtos ao carrinho, gerenciar seus pedidos e efetuar pagamentos de forma segura. O sistema de autenticação permite que os clientes criem uma conta, façam login e acessem recursos exclusivos, como histórico de compras e avaliações de produtos.
+
+O uso do Node.js como tecnologia de Back-End permite a criação de uma API robusta e escalável, capaz de lidar com um grande número de solicitações simultâneas. O banco de dados mongoDB oferece uma solução flexível e escalável para armazenar as informações dos produtos, clientes e pedidos. Além disso, a integração com o AWS S3 permite o armazenamento eficiente e seguro das imagens dos produtos.
