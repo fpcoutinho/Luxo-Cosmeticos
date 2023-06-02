@@ -1,34 +1,33 @@
 <template>
-  <Header />
-  <router-view />
+  <Header :user="user" />
+  <router-view :user="user" />
   <Footer />
 </template>
 
-<script setup>
+<script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { ref } from 'vue'
-import axios from 'axios'
+import { onMounted } from 'vue'
+import { useUserStore } from './stores/userStore'
+import { storeToRefs } from 'pinia'
 
-const user = ref('')
-const error = ref(null)
-
-const getUser = async () => {
-  const token = JSON.parse(localStorage.getItem('user'))
-  if (token) {
-    const url = '/users/' + token
-    try {
-      const data = await axios.get(url)
-      if (!data.status === 200) {
-        user.value = ''
-        throw new Error('Erro ao carregar o user.')
-      }
-      user.value = data.data
-    } catch (err) {
-      error.value = err.message
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+  setup() {
+    const user = ref(null)
+    const userStore = useUserStore()
+    onMounted(async () => {
+      await userStore.fetchUser()
+      const { getUser } = storeToRefs(userStore)
+      user.value = getUser.value
+    })
+    return {
+      user,
     }
-  }
+  },
 }
-
-getUser()
 </script>

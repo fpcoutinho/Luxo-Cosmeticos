@@ -46,6 +46,7 @@ const routes = [
     path: '/user',
     name: 'user',
     component: User,
+    props: true,
   },
   {
     path: '/produto/:id',

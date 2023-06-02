@@ -26,7 +26,14 @@
         </HeartIcon
       ></router-link>
 
-      <router-link to="login" title="Log in"
+      <router-link v-if="user === null" to="login" title="Log in"
+        ><UserIcon
+          class="w-5 h-auto opacity-80 text-primary-500 hover:scale-110 ease-in duration-500"
+        >
+        </UserIcon
+      ></router-link>
+
+      <router-link v-else to="user" title="UserView"
         ><UserIcon
           class="w-5 h-auto opacity-80 text-primary-500 hover:scale-110 ease-in duration-500"
         >
@@ -79,6 +86,7 @@ import { ref } from 'vue'
 import Carrinho from './Carrinho.vue'
 export default {
   name: 'Header',
+  props: ['user'],
   components: {
     HomeIcon,
     UserIcon,
