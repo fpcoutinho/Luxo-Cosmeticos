@@ -21,8 +21,8 @@
       ></router-link>
 
       <router-link v-if="user === null" to="login" title="Log in"
-        ><UserIcon class="navicon text-primary-500"> </UserIcon
-      ></router-link>
+        ><UserIcon class="navicon text-primary-500"> </UserIcon>
+      </router-link>
 
       <router-link v-else to="user" title="UserView"
         ><UserIcon class="navicon text-primary-500"> </UserIcon
@@ -66,9 +66,11 @@ import {
 } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
 import Carrinho from './Carrinho.vue'
+import { useUserStore } from '../stores/userStore'
+import { storeToRefs } from 'pinia'
+
 export default {
   name: 'Header',
-  props: ['user'],
   components: {
     HomeIcon,
     UserIcon,
@@ -79,6 +81,9 @@ export default {
     Carrinho,
   },
   setup() {
+    const userStore = useUserStore()
+    const { user } = storeToRefs(userStore)
+
     const openCarrinho = ref(false)
     const toggleCarrinho = () => {
       openCarrinho.value = !openCarrinho.value
@@ -86,6 +91,7 @@ export default {
     return {
       toggleCarrinho,
       openCarrinho,
+      user,
     }
   },
 }

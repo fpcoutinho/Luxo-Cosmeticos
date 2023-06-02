@@ -3,12 +3,12 @@ import axios from 'axios'
 
 export const useUserStore = defineStore('userStore', {
   state: () => ({
-    user: null,
+    usuario: null,
     token: null,
     favorites: [],
   }),
   getters: {
-    getUser: (state) => state.user,
+    user: (state) => state.usuario,
     getToken: (state) => state.token,
     getFavorites: (state) => state.favorites,
   },
@@ -21,14 +21,20 @@ export const useUserStore = defineStore('userStore', {
         try {
           const data = await axios.get(url)
           if (!data.status === 200) {
-            this.user = null
+            this.usuario = null
             throw new Error('Erro ao carregar o user.')
           }
-          this.user = data.data
+          this.usuario = data.data
         } catch (err) {
           panic(err.message)
         }
       }
+    },
+    async logout() {
+      await axios.post('/auth/logout')
+      this.usuario = null
+      this.token = null
+      this.favorites = []
     },
   },
 })
