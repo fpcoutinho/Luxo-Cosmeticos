@@ -48,3 +48,7 @@ nav a.router-link-exact-active {
   border-bottom: 0.1rem solid #e11d48;
   padding: 0.2rem;
 }
+
+.navicon {
+  @apply w-5 h-auto opacity-80 hover:scale-110 ease-in duration-500;
+}

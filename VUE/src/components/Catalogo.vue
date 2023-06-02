@@ -32,9 +32,19 @@
               </h3>
               <p class="mt-1 text-sm text-gray-500">{{ product.marca }}</p>
             </div>
-            <p class="text-sm font-medium text-gray-900">
-              R$ {{ product.preco }}
-            </p>
+            <div>
+              <p class="text-sm font-medium text-gray-900">
+                R$ {{ product.preco }}
+              </p>
+              <div class="flex gap-2">
+                <button type="button">
+                  <HeartIcon class="navicon" />
+                </button>
+                <button type="button">
+                  <PlusCircleIcon class="navicon" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,6 +53,9 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
+import { HeartIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
+
 defineProps({
   categoria: {
     type: String,
