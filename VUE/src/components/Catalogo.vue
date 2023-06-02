@@ -37,7 +37,7 @@
                 R$ {{ product.preco }}
               </p>
               <div class="flex gap-2">
-                <button type="button">
+                <button type="button" @click="toggleFav(product)">
                   <HeartIcon class="navicon" />
                 </button>
                 <button type="button" @click="addToCart(product)">
@@ -55,6 +55,7 @@
 <script>
 import { HeartIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
 import { useCarrinhoStore } from '@/stores/carrinhoStore'
+import { useUserStore } from '@/stores/userStore'
 
 export default {
   name: 'Catalogo',
@@ -74,14 +75,20 @@ export default {
   },
   setup() {
     const carrinhoStore = useCarrinhoStore()
+    const userStore = useUserStore()
 
     const addToCart = (product) => {
       carrinhoStore.addToCarrinho(product)
       console.log(carrinhoStore)
     }
 
+    const toggleFav = (product) => {
+      userStore.toggleFav(product)
+    }
+
     return {
       addToCart,
+      toggleFav,
     }
   },
 }

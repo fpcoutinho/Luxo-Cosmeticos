@@ -36,5 +36,13 @@ export const useUserStore = defineStore('userStore', {
       this.token = null
       this.favorites = []
     },
+    toggleFav(produto) {
+      if (this.favorites.includes(produto)) {
+        this.favorites = this.favorites.filter((fav) => fav._id !== produto._id)
+      } else {
+        this.favorites.push(produto)
+      }
+      console.log(this.favorites)
+    },
   },
 })
