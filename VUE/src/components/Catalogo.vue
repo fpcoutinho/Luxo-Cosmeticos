@@ -40,7 +40,7 @@
                 <button type="button">
                   <HeartIcon class="navicon" />
                 </button>
-                <button type="button">
+                <button type="button" @click="addToCart(product)">
                   <PlusCircleIcon class="navicon" />
                 </button>
               </div>
@@ -52,18 +52,37 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
+<script>
 import { HeartIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
+import { useCarrinhoStore } from '@/stores/carrinhoStore'
 
-defineProps({
-  categoria: {
-    type: String,
-    default: 'Perfume',
+export default {
+  name: 'Catalogo',
+  components: {
+    HeartIcon,
+    PlusCircleIcon,
   },
-  products: {
-    type: Array,
-    default: () => [],
+  props: {
+    categoria: {
+      type: String,
+      required: true,
+    },
+    products: {
+      type: Array,
+      required: true,
+    },
   },
-})
+  setup() {
+    const carrinhoStore = useCarrinhoStore()
+
+    const addToCart = (product) => {
+      carrinhoStore.addToCarrinho(product)
+      console.log(carrinhoStore)
+    }
+
+    return {
+      addToCart,
+    }
+  },
+}
 </script>

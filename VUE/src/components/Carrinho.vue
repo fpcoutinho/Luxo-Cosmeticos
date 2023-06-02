@@ -60,18 +60,31 @@
 
                     <div class="mt-8">
                       <div class="flow-root">
-                        <ul role="list" class="-my-6 divide-y divide-gray-200">
+                        <ul
+                          v-if="c.length <= 0"
+                          role="list"
+                          class="-my-6 divide-y divide-gray-200"
+                        >
+                          <li>
+                            <p>Não há nenhum produto no seu carrinho.</p>
+                          </li>
+                        </ul>
+                        <ul
+                          v-else
+                          role="list"
+                          class="-my-6 divide-y divide-gray-200"
+                        >
                           <li
-                            v-for="product in products"
-                            :key="product.id"
+                            v-for="product in c"
+                            :key="product.produto._id"
                             class="flex py-6"
                           >
                             <div
                               class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
                             >
                               <img
-                                :src="product.imageSrc"
-                                :alt="product.imageAlt"
+                                :src="product.produto.imagem"
+                                :alt="product.produto.nome"
                                 class="h-full w-full object-cover object-center"
                               />
                             </div>
@@ -82,27 +95,51 @@
                                   class="flex justify-between text-base font-medium text-gray-900"
                                 >
                                   <h3>
-                                    <a :href="product.href">{{
-                                      product.name
-                                    }}</a>
+                                    <router-link
+                                      :to="{
+                                        name: 'produto',
+                                        params: { id: product.produto._id },
+                                      }"
+                                      >{{ product.produto.nome }}</router-link
+                                    >
                                   </h3>
-                                  <p class="ml-4">R$ {{ product.price }}.00</p>
+                                  <p class="ml-4">
+                                    R$ {{ product.produto.preco }}.00
+                                  </p>
                                 </div>
                                 <p class="mt-1 text-sm text-gray-500">
-                                  {{ product.color }}
+                                  {{ product.produto.marca }}
                                 </p>
                               </div>
                               <div
                                 class="flex flex-1 items-end justify-between text-sm"
                               >
-                                <p class="text-gray-500">
-                                  Qty {{ product.quantity }}
-                                </p>
+                                <div
+                                  class="text-gray-500 flex flex-row items-center"
+                                >
+                                  <span>Qty</span>
+                                  <button
+                                    type="button"
+                                    class="w-4"
+                                    @click="minusOne(product.produto)"
+                                  >
+                                    -
+                                  </button>
+                                  <span>{{ product.qtd }}</span>
+                                  <button
+                                    type="button"
+                                    class="w-4"
+                                    @click="addOne(product.produto)"
+                                  >
+                                    +
+                                  </button>
+                                </div>
 
                                 <div class="flex">
                                   <button
                                     type="button"
                                     class="font-medium text-primary-600 hover:text-primary-500"
+                                    @click="removeFromCart(product.produto)"
                                   >
                                     Remover
                                   </button>
@@ -120,7 +157,7 @@
                       class="flex justify-between text-base font-medium text-gray-900"
                     >
                       <p>Subtotal</p>
-                      <p>R$909.00</p>
+                      <p>R$ {{ carrinhoStore.getTotal }},00</p>
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">
                       Prossiga para calcular frete e prazo de entrega.
@@ -158,7 +195,7 @@
   </TransitionRoot>
 </template>
 
-<script setup>
+<script>
 import {
   Dialog,
   DialogPanel,
@@ -166,49 +203,57 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
+import {
+  XMarkIcon,
+  PlusCircleIcon,
+  MinusCircleIcon,
+} from '@heroicons/vue/24/outline'
+import { useCarrinhoStore } from '@/stores/carrinhoStore'
+import { ref } from 'vue'
 
-defineProps({
-  openCarrinho: {
-    type: Boolean,
-    default: false,
+export default {
+  name: 'Carrinho',
+  props: {
+    openCarrinho: {
+      type: Boolean,
+      default: false,
+    },
   },
-})
-defineEmits(['closeCarrinho'])
+  emits: ['closeCarrinho'],
+  components: {
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    TransitionChild,
+    TransitionRoot,
+    XMarkIcon,
+    PlusCircleIcon,
+    MinusCircleIcon,
+  },
+  setup() {
+    const c = ref([])
+    const carrinhoStore = useCarrinhoStore()
+    c.value = carrinhoStore.getCarrinho
 
-const products = [
-  {
-    id: 1,
-    name: 'Perfume Acqua di Gio Profondo',
-    href: '#',
-    color: 'Armani',
-    price: '649',
-    quantity: 1,
-    imageSrc:
-      'https://luxo-cosmeticos.s3.us-west-2.amazonaws.com/e859d6945cb297dd09ea58e2a4a0f32c',
-    imageAlt: 'The best cologne in the world.',
+    const removeFromCart = (product) => {
+      carrinhoStore.removeFromCarrinho(product)
+    }
+
+    const addOne = (product) => {
+      carrinhoStore.addToCarrinho(product)
+    }
+
+    const minusOne = (product) => {
+      carrinhoStore.diminuiQtd(product)
+    }
+
+    return {
+      c,
+      carrinhoStore,
+      removeFromCart,
+      addOne,
+      minusOne,
+    }
   },
-  {
-    id: 2,
-    name: 'Kit Inoar Vitamina C',
-    href: '#',
-    color: 'Inoar',
-    price: '60',
-    quantity: 1,
-    imageSrc:
-      'https://luxo-cosmeticos.s3.us-west-2.amazonaws.com/ae3bf865500983bd445fc68cc95871c0',
-    imageAlt: 'Low poo e vegano!!',
-  },
-  {
-    id: 3,
-    name: 'Base da Virgínia',
-    href: '#',
-    color: 'Sai com água',
-    price: '200',
-    quantity: 1,
-    imageSrc:
-      'https://luxo-cosmeticos.s3.us-west-2.amazonaws.com/5561532ac941b046353a396517663fee',
-    imageAlt: 'Sai até com suor...',
-  },
-]
+}
 </script>
