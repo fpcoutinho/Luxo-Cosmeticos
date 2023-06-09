@@ -1,35 +1,39 @@
 <template>
   <main id="#homeMain" class="flex gap-4 no-scrollbar">
     <Sidebar @categoriaAtual="loadCategoria" />
-    <Catalogo :categoria="cat" :products="products" />
+    <Catalogo
+      :categoria="cat"
+      :products="produtoStore.getProdutosByCategoria(cat)"
+    />
   </main>
 </template>
 
-<script setup>
+<script>
 // @ is an alias to /src
 import Sidebar from '@/components/Sidebar.vue'
 import Catalogo from '@/components/Catalogo.vue'
+import { useProdutoStore } from '@/stores/produtoStore'
 import { ref } from 'vue'
-import axios from 'axios'
 
-const products = ref([])
-const error = ref(null)
-const cat = ref('')
+export default {
+  components: {
+    Sidebar,
+    Catalogo,
+  },
+  setup() {
+    const cat = ref('')
+    const produtoStore = useProdutoStore()
 
-const loadCategoria = async (value) => {
-  cat.value = value
-  const url = '/produtos/categoria/' + value
-  try {
-    let data = await axios.get(url)
-    if (!data.status === 200) {
-      products.value = []
-      throw new Error('Erro ao carregar os dados')
+    const loadCategoria = async (value) => {
+      cat.value = value
     }
-    products.value = data.data
-  } catch (err) {
-    error.value = err.message
-  }
-}
 
-loadCategoria('Perfume')
+    loadCategoria('Perfume')
+    return {
+      cat,
+      loadCategoria,
+      produtoStore,
+    }
+  },
+}
 </script>

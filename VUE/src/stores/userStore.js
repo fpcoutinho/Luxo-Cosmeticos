@@ -26,7 +26,7 @@ export const useUserStore = defineStore('userStore', {
           }
           this.usuario = data.data
         } catch (err) {
-          panic(err.message)
+          console.log(err.message)
         }
       }
     },

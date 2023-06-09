@@ -52,3 +52,14 @@ nav a.router-link-exact-active {
 .navicon {
   @apply w-5 h-auto opacity-80 hover:scale-110 ease-in duration-500;
 }
+
+/* Router fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
