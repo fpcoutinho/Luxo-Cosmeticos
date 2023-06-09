@@ -49,7 +49,6 @@ const createToken = (id) => {
 const signup_post = async (req, res, next) => {
   const { name, surname, email, dataNascimento, password } = req.body
   try {
-    console.log(req.body)
     const user = await User.create({
       name,
       surname,

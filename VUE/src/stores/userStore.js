@@ -42,7 +42,6 @@ export const useUserStore = defineStore('userStore', {
       } else {
         this.favorites.push(produto)
       }
-      console.log(this.favorites)
     },
   },
 })

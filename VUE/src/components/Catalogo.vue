@@ -79,7 +79,6 @@ export default {
 
     const addToCart = (product) => {
       carrinhoStore.addToCarrinho(product)
-      console.log(carrinhoStore)
     }
 
     const toggleFav = (product) => {

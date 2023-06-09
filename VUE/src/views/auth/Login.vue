@@ -36,7 +36,6 @@ const passwordError = ref('')
 
 const login = async (e) => {
   e.preventDefault()
-  console.log(e)
   const form = e.target
   // reset errors
   emailError.value = ''
@@ -52,7 +51,6 @@ const login = async (e) => {
       headers: { 'Content-Type': 'application/json' },
     })
     const data = await res.json()
-    console.log(data)
     if (data.errors) {
       emailError.value = data.errors.email
       passwordError.value = data.errors.password
