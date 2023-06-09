@@ -1,11 +1,6 @@
 require('dotenv').config()
 const fs = require('fs')
-const {
-        Upload
-      } = require("@aws-sdk/lib-storage"),
-      {
-        S3
-      } = require("@aws-sdk/client-s3");
+const S3 = require('aws-sdk/clients/s3')
 
 const bucketName = process.env.AWS_BUCKET_NAME
 const region = process.env.AWS_BUCKET_REGION
@@ -28,10 +23,7 @@ function uploadFile(file) {
     Key: file.filename,
   }
 
-  return new Upload({
-    client: s3,
-    params: uploadParams
-  }).done();
+  return s3.upload(uploadParams).promise()
 }
 exports.uploadFile = uploadFile
 
