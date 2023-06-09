@@ -11,7 +11,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import { onMounted } from 'vue'
+import { onBeforeMount } from 'vue'
 import { useUserStore } from './stores/userStore'
 import { useProdutoStore } from './stores/produtoStore'
 
@@ -23,7 +23,7 @@ export default {
   setup() {
     const userStore = useUserStore()
     const produtoStore = useProdutoStore()
-    onMounted(async () => {
+    onBeforeMount(async () => {
       await userStore.fetchUser()
       await produtoStore.fetchProdutos()
     })
