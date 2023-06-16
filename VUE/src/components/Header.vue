@@ -11,7 +11,10 @@
         />
       </router-link>
     </div>
-    <div v-if="!(user === null)">
+    <div
+      v-if="!(user === null)"
+      class="nav-header flex-3 h-full flex items-center gap-10 p-0"
+    >
       <nav class="nav-header flex-3 h-full flex items-center gap-4 p-0">
         <router-link to="/" title="Início"
           ><HomeIcon class="navicon text-primary-500"> </HomeIcon
