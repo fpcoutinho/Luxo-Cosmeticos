@@ -47,7 +47,7 @@ const createToken = (id) => {
 
 // Authentication controller functions
 const signup_post = async (req, res, next) => {
-  const { name, surname, email, dataNascimento, password } = req.body
+  const { name, surname, email, dataNascimento, password, isAdmin } = req.body
   try {
     const user = await User.create({
       name,
@@ -55,6 +55,7 @@ const signup_post = async (req, res, next) => {
       email,
       dataNascimento,
       password,
+      isAdmin,
     })
     const token = createToken(user._id)
     res.cookie('jwt', token, {

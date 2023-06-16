@@ -11,46 +11,58 @@
         />
       </router-link>
     </div>
-    <nav class="nav-header flex-3 h-full flex items-center gap-4 p-0">
-      <router-link to="/" title="Início"
-        ><HomeIcon class="navicon text-primary-500"> </HomeIcon
-      ></router-link>
-
-      <router-link to="favorites" title="Favoritos"
-        ><HeartIcon class="navicon text-primary-500"> </HeartIcon
-      ></router-link>
-
-      <router-link v-if="user === null" to="login" title="Log in"
-        ><UserIcon class="navicon text-primary-500"> </UserIcon>
-      </router-link>
-
-      <router-link v-else to="user" title="UserView"
-        ><UserIcon class="navicon text-primary-500"> </UserIcon
-      ></router-link>
-
-      <router-link to="about" title="Sobre"
-        ><InformationCircleIcon class="navicon text-primary-500">
-        </InformationCircleIcon
-      ></router-link>
-
-      <router-link to="help" title="Ajuda"
-        ><QuestionMarkCircleIcon class="navicon text-primary-500">
-          help
-        </QuestionMarkCircleIcon></router-link
+    <div v-if="!(user === null)">
+      <nav class="nav-header flex-3 h-full flex items-center gap-4 p-0">
+        <router-link to="/" title="Início"
+          ><HomeIcon class="navicon text-primary-500"> </HomeIcon
+        ></router-link>
+        <router-link v-if="!user.isAdmin" to="favorites" title="Favoritos"
+          ><HeartIcon class="navicon text-primary-500"> </HeartIcon
+        ></router-link>
+        <router-link to="user" title="UserView"
+          ><UserIcon class="navicon text-primary-500"> </UserIcon
+        ></router-link>
+        <router-link
+          v-if="user.isAdmin"
+          to="/admin/cria/produto"
+          title="Criar Produto"
+          ><PlusCircleIcon class="navicon text-primary-500"> </PlusCircleIcon
+        ></router-link>
+        <router-link to="about" title="Sobre"
+          ><InformationCircleIcon class="navicon text-primary-500">
+          </InformationCircleIcon
+        ></router-link>
+      </nav>
+      <nav
+        class="nav-header flex-3 h-full flex items-center gap-4 p-0"
+        v-if="!user.isAdmin"
       >
-    </nav>
-    <nav class="nav-header flex-3 h-full flex items-center gap-4 p-0">
-      <button
-        type="button"
-        title="Sacola de Compras"
-        class="no-underline text-sm"
-        @click="toggleCarrinho"
-      >
-        <ShoppingBagIcon class="navicon text-primary-300">
-          shopping_cart
-        </ShoppingBagIcon>
-      </button>
-    </nav>
+        <button
+          type="button"
+          title="Sacola de Compras"
+          class="no-underline text-sm"
+          @click="toggleCarrinho"
+        >
+          <ShoppingBagIcon class="navicon text-primary-300">
+            shopping_cart
+          </ShoppingBagIcon>
+        </button>
+      </nav>
+    </div>
+    <div v-else>
+      <nav class="nav-header flex-3 h-full flex items-center gap-4 p-0">
+        <router-link to="/" title="Início"
+          ><HomeIcon class="navicon text-primary-500"> </HomeIcon
+        ></router-link>
+        <router-link to="login" title="Log in"
+          ><UserIcon class="navicon text-primary-500"> </UserIcon>
+        </router-link>
+        <router-link to="about" title="Sobre"
+          ><InformationCircleIcon class="navicon text-primary-500">
+          </InformationCircleIcon
+        ></router-link>
+      </nav>
+    </div>
   </header>
   <Carrinho :openCarrinho="openCarrinho" @closeCarrinho="toggleCarrinho" />
 </template>
@@ -63,6 +75,7 @@ import {
   ShoppingBagIcon,
   InformationCircleIcon,
   QuestionMarkCircleIcon,
+  PlusCircleIcon,
 } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
 import Carrinho from './Carrinho.vue'
@@ -78,6 +91,7 @@ export default {
     ShoppingBagIcon,
     InformationCircleIcon,
     QuestionMarkCircleIcon,
+    PlusCircleIcon,
     Carrinho,
   },
   setup() {

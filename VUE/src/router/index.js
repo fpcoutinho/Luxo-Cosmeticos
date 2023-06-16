@@ -5,7 +5,6 @@ import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import User from '../views/User.vue'
 import Favorites from '../views/Favorites.vue'
-import Help from '../views/Help.vue'
 import NotFound from '../views/NotFound.vue'
 import Produto from '../views/Produto.vue'
 import CriaProduto from '../views/admin/CriaProduto.vue'
@@ -26,11 +25,6 @@ const routes = [
     path: '/favorites',
     name: 'favorites',
     component: Favorites,
-  },
-  {
-    path: '/help',
-    name: 'help',
-    component: Help,
   },
   {
     path: '/login',

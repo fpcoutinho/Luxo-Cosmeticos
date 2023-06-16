@@ -1,9 +1,9 @@
 <template>
   <main>
     <form @submit="criaProduto">
-      <form-header>
+      <div class="form-header">
         <h2>Cadastro de Produto</h2>
-      </form-header>
+      </div>
       <div class="form-group">
         <label for="nome">Nome</label>
         <input
@@ -85,7 +85,12 @@
         <div class="error descricao" id="erroDescricao"></div>
       </div>
       <div class="form-group">
-        <button type="submit">Criar</button>
+        <button
+          class="bg-primary-500 text-primary-100 hover:bg-primary-400"
+          type="submit"
+        >
+          Criar
+        </button>
       </div>
     </form>
   </main>
@@ -184,13 +189,18 @@ li {
 }
 
 form {
-  width: 400px;
+  width: 800px;
   margin: 0 auto;
   padding: 30px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background: white;
 }
+
+.form-group {
+  text-align: start;
+}
+
 form button {
   margin: auto;
   margin-top: 10px;
@@ -224,8 +234,6 @@ label {
 button {
   margin-top: 30px;
   border-radius: 36px;
-  background-color: var(--h);
-  color: var(--bg);
   border: 0;
   text-transform: uppercase;
   font-weight: 700;
@@ -239,19 +247,5 @@ button {
   margin: 10px 2px;
   font-size: 0.8em;
   font-weight: bold;
-}
-
-form-group button:hover {
-  background-color: var(--h-hover);
-}
-
-@media screen and (min-width: 768px) {
-  main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1rem;
-  }
 }
 </style>
